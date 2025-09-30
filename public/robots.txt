@@ -1,5 +1,5 @@
 # Robots.txt optimized for AI crawlers
-# Allow all AI bots and search engines
+# Next.js template with server-side rendering
 
 User-agent: *
 Allow: /
@@ -33,13 +33,18 @@ User-agent: Googlebot
 Allow: /
 
 # AI-specific resources
-Allow: /ai
+Allow: /.well-known/ai.json
+Allow: /api/ai/
 Allow: /sitemap.json
-Allow: /api/
+Allow: /ai-endpoint
 
-# Sitemap location
-Sitemap: https://example.com/sitemap.xml
-Sitemap: https://example.com/sitemap.json
+# Block sensitive paths
+Disallow: /api/internal/
+Disallow: /_next/static/
 
-# Crawl delay (optional, can be adjusted)
+# Sitemap locations
+Sitemap: https://seothon-template-nextjs.vercel.app/sitemap.xml
+Sitemap: https://seothon-template-nextjs.vercel.app/sitemap.json
+
+# Crawl delay (optional)
 Crawl-delay: 1

@@ -1,93 +1,75 @@
-import { Link } from 'react-router-dom'
-import { Menu } from 'lucide-react'
-import { useState } from 'react'
+import Link from 'next/link'
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  
-  const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Contact', href: '/contact' },
-  ]
-  
+export default function Header() {
   return (
-    <header 
-      className="bg-white shadow-sm sticky top-0 z-50" 
+    <header
       role="banner"
-      itemScope 
+      itemScope
       itemType="https://schema.org/WPHeader"
+      className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60"
     >
-      <nav 
-        className="container mx-auto px-4 py-4"
+      <nav
         role="navigation"
         aria-label="Main navigation"
-        itemScope
-        itemType="https://schema.org/SiteNavigationElement"
+        className="container mx-auto flex h-16 items-center justify-between px-4"
       >
-        <div className="flex items-center justify-between">
-          <Link 
-            to="/" 
-            className="text-2xl font-bold text-primary hover:opacity-80 transition-opacity"
-            itemProp="url"
-            aria-label="Homepage"
+        <Link
+          href="/"
+          className="flex items-center space-x-2"
+          itemProp="url"
+        >
+          <span
+            className="text-2xl font-bold text-primary-600"
+            itemProp="name"
           >
-            <span itemProp="name">AI Business</span>
-          </Link>
-          
-          {/* Desktop Navigation */}
-          <ul className="hidden md:flex space-x-8" role="menubar">
-            {navigation.map((item) => (
-              <li key={item.name} role="none">
-                <Link
-                  to={item.href}
-                  className="text-foreground hover:text-primary transition-colors font-medium"
-                  itemProp="url"
-                  role="menuitem"
-                >
-                  <span itemProp="name">{item.name}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-menu"
-            aria-label="Toggle navigation menu"
-          >
-            <Menu className="w-6 h-6" />
-          </button>
-        </div>
-        
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <ul 
-            id="mobile-menu"
-            className="md:hidden mt-4 space-y-2"
-            role="menu"
-          >
-            {navigation.map((item) => (
-              <li key={item.name} role="none">
-                <Link
-                  to={item.href}
-                  className="block py-2 text-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                  role="menuitem"
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
+            Seothon
+          </span>
+        </Link>
+
+        <ul className="flex items-center space-x-6">
+          <li>
+            <Link
+              href="/"
+              className="text-sm font-medium transition-colors hover:text-primary-600"
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/about"
+              className="text-sm font-medium transition-colors hover:text-primary-600"
+            >
+              About
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/services"
+              className="text-sm font-medium transition-colors hover:text-primary-600"
+            >
+              Services
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/contact"
+              className="text-sm font-medium transition-colors hover:text-primary-600"
+            >
+              Contact
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/ai-endpoint"
+              className="text-sm font-medium text-secondary-600 transition-colors hover:text-secondary-700"
+              aria-label="AI Data Endpoint"
+            >
+              AI Data
+            </Link>
+          </li>
+        </ul>
       </nav>
     </header>
   )
 }
-
-export default Header

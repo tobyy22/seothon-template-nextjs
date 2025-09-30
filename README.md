@@ -1,58 +1,68 @@
-# 🤖 AI-Optimized Website Template
+# 🤖 Seothon Next.js Template - AI-Optimized with SSR
 
-Modern, semantic website template specifically designed for maximum AI search engine visibility and understanding. This template ensures your content is perfectly structured for AI language models like Claude, ChatGPT, Perplexity, and other AI-powered search systems.
+Modern Next.js business template specifically designed for maximum AI search engine visibility with **server-side rendering**. This ensures AI bots receive complete HTML content without JavaScript execution.
 
 ## 🎯 Key Features
+
+### Server-Side Rendering (SSR)
+- **Complete HTML on server** - AI bots see full content immediately
+- **No JavaScript required** - Content is readable without client-side execution
+- **Next.js 14 App Router** - Modern React Server Components
+- **Optimized for AI crawlers** - Perfect for Claude, ChatGPT, Perplexity
 
 ### AI Optimization
 - **Structured Data**: Comprehensive JSON-LD Schema.org markup on every page
 - **Semantic HTML**: Proper heading hierarchy, ARIA labels, and microdata
-- **AI Endpoint**: Dedicated `/ai` route with machine-readable business data
-- **Meta Tags**: AI-specific meta tags for crawler identification
-- **Clean Architecture**: Semantic components designed for AI parsing
+- **AI Endpoints**: 
+  - `/.well-known/ai.json` - Discovery endpoint
+  - `/api/ai/data` - Business data JSON
+  - `/api/ai/manifest` - Actions manifest
+- **AI-Specific Meta Tags**: Optimized for AI crawler identification
+- **Web Intent Actions**: Pre-fillable contact forms via URL parameters
 
 ### Technical Stack
-- **React 18** with TypeScript
-- **React Router** for navigation
+- **Next.js 14** with App Router
+- **React 18** with Server Components
+- **TypeScript** for type safety
 - **Tailwind CSS** for styling
-- **Vite** for blazing-fast development
-- **SEO Components** with dynamic meta tag management
-
-### SEO Features
-- Dynamic meta tags and structured data
-- Semantic HTML5 elements
-- Accessibility-first approach (WCAG compliant)
-- Mobile-responsive design
-- Performance optimized
+- **Lucide React** for icons
 
 ## 📁 Project Structure
 
 ```
-seothon-ai-optimized-template/
+seothon-template-nextjs/
 ├── src/
-│   ├── components/
-│   │   ├── Layout.tsx          # Main layout wrapper
-│   │   ├── Header.tsx          # Semantic navigation header
-│   │   ├── Footer.tsx          # Footer with structured data
-│   │   └── SEOHead.tsx         # Dynamic SEO meta management
-│   ├── pages/
-│   │   ├── HomePage.tsx        # Landing page
-│   │   ├── AboutPage.tsx       # About page
-│   │   ├── ServicesPage.tsx    # Services listing
-│   │   ├── ContactPage.tsx     # Contact form
-│   │   ├── AIEndpoint.tsx      # AI data endpoint ⭐
-│   │   └── NotFoundPage.tsx    # 404 page
-│   ├── App.tsx                 # Main app component
-│   ├── main.tsx                # Entry point
-│   └── index.css               # Global styles
+│   ├── app/
+│   │   ├── layout.tsx              # Root layout with global metadata
+│   │   ├── page.tsx                # Home page (SSR)
+│   │   ├── about/
+│   │   │   └── page.tsx            # About page (SSR)
+│   │   ├── services/
+│   │   │   └── page.tsx            # Services page (SSR)
+│   │   ├── contact/
+│   │   │   └── page.tsx            # Contact page (SSR)
+│   │   ├── ai-endpoint/
+│   │   │   └── page.tsx            # AI data viewer (SSR)
+│   │   ├── api/
+│   │   │   └── ai/
+│   │   │       ├── data/
+│   │   │       │   └── route.ts    # Business data API
+│   │   │       └── manifest/
+│   │   │           └── route.ts    # Actions manifest API
+│   │   └── globals.css             # Global styles
+│   └── components/
+│       ├── Header.tsx              # Navigation header
+│       ├── Footer.tsx              # Footer with links
+│       └── ContactForm.tsx         # Contact form (Client Component)
 ├── public/
-│   ├── robots.txt              # AI crawler instructions
-│   └── sitemap.json            # JSON sitemap for AI
-├── index.html                  # HTML with structured data
-├── package.json
-├── vite.config.ts
-├── tailwind.config.ts
-└── tsconfig.json
+│   ├── .well-known/
+│   │   └── ai.json                 # AI discovery endpoint ⭐
+│   ├── robots.txt                  # AI crawler permissions
+│   └── sitemap.json                # JSON sitemap
+├── next.config.js                  # Next.js configuration
+├── tailwind.config.ts              # Tailwind configuration
+├── tsconfig.json                   # TypeScript configuration
+└── package.json
 ```
 
 ## 🚀 Getting Started
@@ -75,7 +85,7 @@ pnpm install
 npm run dev
 ```
 
-Visit `http://localhost:5173` to see your site.
+Visit `http://localhost:3000` to see your site.
 
 ### Build for Production
 
@@ -83,233 +93,261 @@ Visit `http://localhost:5173` to see your site.
 # Build optimized production bundle
 npm run build
 
-# Preview production build
-npm run preview
+# Start production server
+npm start
 ```
 
 ## 🤖 AI Optimization Features
 
-### 1. Structured Data (JSON-LD)
+### 1. Server-Side Rendering
+
+**Why it matters:** AI bots receive complete HTML immediately without JavaScript execution.
+
+Every page is rendered on the server:
+```tsx
+// src/app/page.tsx
+export default function HomePage() {
+  return (
+    <main>
+      {/* Content is fully rendered on server */}
+      <h1>AI can read this immediately</h1>
+    </main>
+  )
+}
+```
+
+### 2. Structured Data (JSON-LD)
 
 Every page includes comprehensive Schema.org structured data:
 
-- **Organization** schema with complete business info
-- **WebSite** schema with search action
-- **WebPage** schema for each page
-- **BreadcrumbList** for navigation
-- **Service** schema for offerings
-- **ContactPoint** for contact information
-
-### 2. AI Endpoint (`/ai`)
-
-The `/ai` route provides a machine-readable JSON endpoint containing:
-
-- Complete organization information
-- All services with detailed descriptions
-- Page inventory with content summaries
-- FAQs for common questions
-- Metadata and update timestamps
-
-**Key Features:**
-- Human-readable HTML view
-- Raw JSON format toggle
-- Downloadable JSON file
-- Copy to clipboard functionality
-
-### 3. Semantic HTML
-
-All components use proper semantic HTML5:
-
-```html
-<header role="banner" itemScope itemType="https://schema.org/WPHeader">
-<nav role="navigation" aria-label="Main navigation">
-<main id="main-content" role="main">
-<article itemScope itemType="https://schema.org/Article">
-<footer role="contentinfo" itemScope itemType="https://schema.org/WPFooter">
+```tsx
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Your Company Name',
+  // ... complete organization info
+}
 ```
 
-### 4. AI-Specific Meta Tags
+### 3. AI Discovery Endpoint
 
-```html
-<meta name="ai-accessible" content="true" />
-<meta name="ai-content-type" content="business-website" />
-<meta name="ai-structured-data" content="/ai" />
-<meta name="ai-sitemap" content="/sitemap.json" />
+**`/.well-known/ai.json`** - Standard discovery endpoint:
+
+```json
+{
+  "version": "1.0",
+  "brand": {
+    "name": "Your Company Name",
+    "website": "https://your-site.com"
+  },
+  "capabilities": {
+    "actions_manifest": "/api/ai/manifest",
+    "data_endpoint": "/api/ai/data"
+  }
+}
 ```
 
-### 5. Robots.txt Configuration
+### 4. AI Actions Manifest
 
-Optimized for AI crawlers including:
-- GPTBot (OpenAI)
-- ClaudeBot (Anthropic)
-- PerplexityBot
-- Google-Extended
-- And all major search engines
+**`/api/ai/manifest`** - Web-intent actions:
+
+```json
+{
+  "actions": [
+    {
+      "id": "prefill_contact_form",
+      "kind": "web-intent",
+      "method": "GET",
+      "endpoint": "/contact",
+      "prefill": {
+        "via": "query",
+        "mapping": {
+          "name": "name",
+          "email": "email"
+        }
+      }
+    }
+  ]
+}
+```
+
+AI assistants can generate URLs like:
+```
+/contact?name=John&email=john@example.com&message=Hello
+```
+
+### 5. Business Data API
+
+**`/api/ai/data`** - Complete business information:
+
+- Organization details
+- Services catalog
+- Page inventory
+- FAQs
+- Capabilities
 
 ## 📝 Customization Guide
 
 ### 1. Update Organization Info
 
-Edit `index.html` to update the base JSON-LD structured data:
+Edit `src/app/layout.tsx`:
 
-```html
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Your Company Name",
-  "url": "https://yoursite.com",
-  ...
+```tsx
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'YOUR COMPANY NAME',
+  url: 'https://YOUR-DOMAIN.com',
+  // ... update all fields
 }
-</script>
 ```
 
-### 2. Customize AI Endpoint Data
+Also update:
+- `public/.well-known/ai.json`
+- `src/app/api/ai/data/route.ts`
 
-Edit `src/pages/AIEndpoint.tsx` to update the `aiData` object with your business information.
+### 2. Customize Services
 
-### 3. Update Services
+Edit `src/app/services/page.tsx`:
 
-Modify the `services` array in `src/pages/ServicesPage.tsx` to reflect your offerings.
+```tsx
+const services = [
+  {
+    id: 'your-service',
+    name: 'Your Service Name',
+    description: 'Description',
+    features: [...],
+    price: 'From $X,XXX',
+  },
+]
+```
 
-### 4. Brand Colors
+### 3. Update Contact Form
 
-Update Tailwind theme in `tailwind.config.ts`:
+The contact form in `src/components/ContactForm.tsx` supports URL pre-filling:
+
+```tsx
+// Automatically fills from query params
+/contact?name=John&email=john@example.com
+```
+
+### 4. Modify Brand Colors
+
+Edit `tailwind.config.ts`:
 
 ```typescript
-theme: {
-  extend: {
-    colors: {
-      primary: "hsl(var(--primary))",
-      // ...
-    }
-  }
+colors: {
+  primary: {
+    500: '#YOUR-COLOR',
+    600: '#YOUR-COLOR',
+    // ...
+  },
 }
 ```
-
-### 5. Meta Tags
-
-Update default meta tags in `index.html` and page-specific ones in each page component.
 
 ## 🎨 Styling
 
-This template uses Tailwind CSS with a custom theme. Global styles are in `src/index.css`.
-
-### Custom CSS Classes
-
-- `.sr-only` - Screen reader only content
-- `.skip-to-main` - Skip navigation link
-- `[data-ai-content]` - AI content markers
-- `[data-ai-section]` - AI section markers
+Uses Tailwind CSS with custom theme. Global styles in `src/app/globals.css`.
 
 ## ♿ Accessibility
 
-The template follows WCAG 2.1 Level AA standards:
-
-- Semantic HTML structure
+- Semantic HTML5 structure
 - ARIA labels and roles
 - Keyboard navigation support
 - Skip to main content link
-- Focus management
-- Color contrast compliance
+- WCAG 2.1 Level AA compliant
 
-## 🔍 SEO Checklist
+## 🔍 SEO Features
 
+- [x] Server-side rendering
 - [x] Structured data on all pages
 - [x] Semantic HTML5 elements
-- [x] Meta descriptions
-- [x] Open Graph tags
-- [x] Twitter Card tags
-- [x] Canonical URLs
-- [x] XML/JSON sitemaps
+- [x] Next.js Metadata API
+- [x] Sitemap (JSON & XML)
 - [x] Robots.txt
 - [x] AI-specific meta tags
 - [x] Mobile responsive
-- [x] Fast loading (Vite optimization)
-- [x] Accessible (WCAG 2.1 AA)
+- [x] Performance optimized
 
-## 🤝 AI Search Engine Compatibility
+## 🤝 AI Compatibility
 
 Optimized for:
 
 - ✅ Claude (Anthropic)
 - ✅ ChatGPT (OpenAI)
 - ✅ Perplexity AI
-- ✅ Google Bard/Gemini
+- ✅ Google Gemini
 - ✅ Bing Chat
-- ✅ Traditional search engines (Google, Bing)
+- ✅ Traditional search engines
 
-## 📊 Performance
+## 📊 Key Endpoints
 
-- Lighthouse Score: 95+ (all metrics)
-- First Contentful Paint: < 1s
-- Time to Interactive: < 2s
-- SEO Score: 100
+| Endpoint | Description | Type |
+|----------|-------------|------|
+| `/.well-known/ai.json` | AI discovery | Static JSON |
+| `/api/ai/data` | Business data | API Route |
+| `/api/ai/manifest` | Actions manifest | API Route |
+| `/ai-endpoint` | Human-readable AI data | SSR Page |
+| `/sitemap.json` | JSON sitemap | Static JSON |
 
-## 🛠️ Advanced Configuration
+## 🛠️ Deployment
 
-### Adding New Pages
+### Vercel (Recommended)
 
-1. Create page component in `src/pages/`
-2. Add route in `src/App.tsx`
-3. Update sitemap in `public/sitemap.json`
-4. Add page data to AI endpoint
-5. Include structured data
+```bash
+# Install Vercel CLI
+npm i -g vercel
 
-### Custom Structured Data
-
-Use the `SEOHead` component to add page-specific structured data:
-
-```tsx
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Your Article Title",
-  // ...
-}
-
-<Layout structuredData={structuredData}>
-  {/* Page content */}
-</Layout>
+# Deploy
+vercel
 ```
+
+Or connect your GitHub repo to Vercel for automatic deployments.
+
+### Other Platforms
+
+The template works on any platform supporting Next.js:
+- Netlify
+- AWS Amplify
+- Railway
+- Render
 
 ## 📚 Resources
 
-- [Schema.org Documentation](https://schema.org/)
-- [Google Structured Data Guide](https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data)
-- [AI Search Optimization Best Practices](https://www.anthropic.com)
-- [React Documentation](https://react.dev)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Schema.org](https://schema.org/)
+- [AI Search Optimization Guide](https://www.anthropic.com)
 - [Tailwind CSS](https://tailwindcss.com)
 
 ## 🐛 Troubleshooting
-
-### Structured Data Issues
-
-Validate your structured data:
-- [Google Rich Results Test](https://search.google.com/test/rich-results)
-- [Schema.org Validator](https://validator.schema.org/)
 
 ### Build Errors
 
 ```bash
 # Clear cache and reinstall
-rm -rf node_modules package-lock.json
+rm -rf .next node_modules package-lock.json
 npm install
+npm run build
 ```
+
+### Structured Data Validation
+
+- [Google Rich Results Test](https://search.google.com/test/rich-results)
+- [Schema.org Validator](https://validator.schema.org/)
 
 ## 📄 License
 
-MIT License - feel free to use this template for any project.
+MIT License - feel free to use for any project.
 
 ## 🙋 Support
 
 For issues or questions:
 - Check the documentation above
-- Review example implementations in the code
+- Review example implementations
 - Ensure all dependencies are installed correctly
 
 ---
 
 **Built with ❤️ for the AI-powered web**
 
-Optimized for AI search engines • Semantic HTML • Structured Data • Accessibility First
+Next.js 14 • Server-Side Rendering • AI-Optimized • Structured Data • Semantic HTML

@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "brand": {
+    "name": "Your Company Name",
+    "website": "https://seothon-template-nextjs.vercel.app",
+    "description": "AI-optimized business providing innovative solutions",
+    "logo": "https://seothon-template-nextjs.vercel.app/logo.png",
+    "contact": {
+      "email": "info@example.com",
+      "phone": "+420-XXX-XXX-XXX",
+      "address": {
+        "street": "Example Street 123",
+        "city": "Prague",
+        "postalCode": "110 00",
+        "country": "Czech Republic"
+      }
+    }
+  },
+  "capabilities": {
+    "actions_manifest": "https://seothon-template-nextjs.vercel.app/api/ai/manifest",
+    "data_endpoint": "https://seothon-template-nextjs.vercel.app/api/ai/data",
+    "schema_org": [
+      "Organization",
+      "WebSite",
+      "WebPage",
+      "Service",
+      "ContactPoint"
+    ],
+    "languages": ["cs", "en"],
+    "rendering": "server-side",
+    "structured_data": true
+  },
+  "legal": {
+    "privacy_policy": "https://seothon-template-nextjs.vercel.app/privacy",
+    "terms_of_service": "https://seothon-template-nextjs.vercel.app/terms"
+  },
+  "metadata": {
+    "last_updated": "2025-09-30T00:00:00Z",
+    "version": "1.0.0",
+    "generator": "Next.js 14 + React 18"
+  }
+}

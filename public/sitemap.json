@@ -1,73 +1,68 @@
 {
   "version": "1.0",
-  "encoding": "UTF-8",
-  "lastUpdate": "2025-09-29T00:00:00Z",
+  "lastUpdated": "2025-09-30T00:00:00Z",
   "website": {
-    "name": "AI Business",
-    "url": "https://example.com",
-    "description": "AI-optimized business platform",
-    "language": "cs",
-    "aiOptimized": true
+    "name": "Your Company Name",
+    "url": "https://seothon-template-nextjs.vercel.app",
+    "description": "AI-optimized business template with Next.js SSR"
   },
   "pages": [
     {
-      "url": "https://example.com/",
-      "title": "Home - AI-Optimized Business",
-      "description": "Welcome to our AI-optimized business platform offering modern solutions",
-      "lastModified": "2025-09-29T00:00:00Z",
-      "changeFrequency": "weekly",
+      "url": "https://seothon-template-nextjs.vercel.app/",
+      "title": "Home",
+      "description": "AI-optimized business template with Next.js server-side rendering",
+      "lastModified": "2025-09-30T00:00:00Z",
       "priority": 1.0,
-      "contentType": "homepage",
-      "structuredData": true
+      "changeFrequency": "weekly"
     },
     {
-      "url": "https://example.com/about",
-      "title": "About Us - AI Business",
-      "description": "Learn about our mission to revolutionize business with AI-optimized solutions",
-      "lastModified": "2025-09-29T00:00:00Z",
-      "changeFrequency": "monthly",
+      "url": "https://seothon-template-nextjs.vercel.app/about",
+      "title": "About Us",
+      "description": "Learn about our mission to create AI-optimized web solutions",
+      "lastModified": "2025-09-30T00:00:00Z",
       "priority": 0.8,
-      "contentType": "about",
-      "structuredData": true
+      "changeFrequency": "monthly"
     },
     {
-      "url": "https://example.com/services",
-      "title": "Services - AI Business",
-      "description": "Professional AI SEO and web optimization services",
-      "lastModified": "2025-09-29T00:00:00Z",
-      "changeFrequency": "weekly",
+      "url": "https://seothon-template-nextjs.vercel.app/services",
+      "title": "Services",
+      "description": "Explore our AI SEO optimization and web development services",
+      "lastModified": "2025-09-30T00:00:00Z",
       "priority": 0.9,
-      "contentType": "services",
-      "structuredData": true
+      "changeFrequency": "weekly"
     },
     {
-      "url": "https://example.com/contact",
-      "title": "Contact Us - AI Business",
-      "description": "Get in touch with our AI optimization experts",
-      "lastModified": "2025-09-29T00:00:00Z",
-      "changeFrequency": "monthly",
+      "url": "https://seothon-template-nextjs.vercel.app/contact",
+      "title": "Contact Us",
+      "description": "Get in touch with us for AI SEO optimization services",
+      "lastModified": "2025-09-30T00:00:00Z",
+      "priority": 0.8,
+      "changeFrequency": "monthly"
+    },
+    {
+      "url": "https://seothon-template-nextjs.vercel.app/ai-endpoint",
+      "title": "AI Data Endpoint",
+      "description": "Machine-readable business data for AI assistants and search engines",
+      "lastModified": "2025-09-30T00:00:00Z",
       "priority": 0.7,
-      "contentType": "contact",
-      "structuredData": true
-    },
-    {
-      "url": "https://example.com/ai",
-      "title": "AI Data Endpoint - AI Business",
-      "description": "Structured, machine-readable data about our organization for AI systems",
-      "lastModified": "2025-09-29T00:00:00Z",
-      "changeFrequency": "daily",
-      "priority": 1.0,
-      "contentType": "ai-endpoint",
-      "structuredData": true,
-      "machineReadable": true
+      "changeFrequency": "weekly"
     }
   ],
   "aiEndpoints": [
     {
-      "url": "https://example.com/ai",
-      "format": "json",
-      "description": "Complete structured data about organization, services, and content",
-      "lastUpdated": "2025-09-29T00:00:00Z"
+      "url": "https://seothon-template-nextjs.vercel.app/.well-known/ai.json",
+      "type": "discovery",
+      "description": "AI discovery endpoint with brand information and capabilities"
+    },
+    {
+      "url": "https://seothon-template-nextjs.vercel.app/api/ai/data",
+      "type": "data",
+      "description": "Complete business data in JSON format"
+    },
+    {
+      "url": "https://seothon-template-nextjs.vercel.app/api/ai/manifest",
+      "type": "actions",
+      "description": "AI actions manifest for web intents"
     }
   ]
 }

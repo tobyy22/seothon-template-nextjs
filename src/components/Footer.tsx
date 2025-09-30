@@ -1,95 +1,156 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
-const Footer = () => {
+export default function Footer() {
   const currentYear = new Date().getFullYear()
-  
+
+  const structuredData = {
+    '@type': 'WPFooter',
+    copyrightYear: currentYear,
+    copyrightHolder: {
+      '@type': 'Organization',
+      name: 'Your Company Name',
+    },
+  }
+
   return (
-    <footer 
-      className="bg-gray-50 border-t mt-auto" 
+    <footer
       role="contentinfo"
       itemScope
       itemType="https://schema.org/WPFooter"
+      className="border-t bg-gray-50"
     >
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* Company Info */}
-          <div itemScope itemType="https://schema.org/Organization">
-            <h3 className="font-bold text-lg mb-4" itemProp="name">AI Business</h3>
-            <p className="text-muted-foreground mb-4" itemProp="description">
-              Modern business solutions optimized for AI search engines.
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Seothon</h3>
+            <p className="text-sm text-gray-600">
+              AI-optimized business solutions for the modern web.
             </p>
-            <address className="not-italic text-sm text-muted-foreground" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
-              <span itemProp="streetAddress">Example Street 123</span><br />
-              <span itemProp="postalCode">110 00</span> <span itemProp="addressLocality">Prague</span><br />
-              <span itemProp="addressCountry">Czech Republic</span>
-            </address>
           </div>
-          
+
           {/* Quick Links */}
-          <nav aria-label="Footer navigation">
-            <h3 className="font-bold text-lg mb-4">Quick Links</h3>
+          <div className="space-y-4">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-900">
+              Quick Links
+            </h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  href="/"
+                  className="text-sm text-gray-600 transition-colors hover:text-primary-600"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="text-sm text-gray-600 transition-colors hover:text-primary-600"
+                >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  href="/services"
+                  className="text-sm text-gray-600 transition-colors hover:text-primary-600"
+                >
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  href="/contact"
+                  className="text-sm text-gray-600 transition-colors hover:text-primary-600"
+                >
                   Contact
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* AI Resources */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-900">
+              AI Resources
+            </h4>
+            <ul className="space-y-2">
               <li>
-                <Link to="/ai" className="text-muted-foreground hover:text-primary transition-colors">
-                  AI Data Endpoint
+                <Link
+                  href="/ai-endpoint"
+                  className="text-sm text-gray-600 transition-colors hover:text-secondary-600"
+                >
+                  AI Endpoint
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/.well-known/ai.json"
+                  className="text-sm text-gray-600 transition-colors hover:text-secondary-600"
+                >
+                  AI Discovery
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/api/ai/data"
+                  className="text-sm text-gray-600 transition-colors hover:text-secondary-600"
+                >
+                  AI Data API
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/sitemap.json"
+                  className="text-sm text-gray-600 transition-colors hover:text-secondary-600"
+                >
+                  JSON Sitemap
                 </Link>
               </li>
             </ul>
-          </nav>
-          
-          {/* Contact Info */}
-          <div itemScope itemType="https://schema.org/ContactPoint">
-            <h3 className="font-bold text-lg mb-4">Contact</h3>
-            <ul className="space-y-2 text-sm">
+          </div>
+
+          {/* Legal */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-900">
+              Legal
+            </h4>
+            <ul className="space-y-2">
               <li>
-                <a 
-                  href="mailto:info@example.com" 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                  itemProp="email"
+                <Link
+                  href="/privacy"
+                  className="text-sm text-gray-600 transition-colors hover:text-primary-600"
                 >
-                  info@example.com
-                </a>
+                  Privacy Policy
+                </Link>
               </li>
               <li>
-                <a 
-                  href="tel:+420XXXXXXXXX" 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                  itemProp="telephone"
+                <Link
+                  href="/terms"
+                  className="text-sm text-gray-600 transition-colors hover:text-primary-600"
                 >
-                  +420 XXX XXX XXX
-                </a>
+                  Terms of Service
+                </Link>
               </li>
             </ul>
           </div>
         </div>
-        
-        <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>
-            &copy; {currentYear} AI Business. All rights reserved.
-            {' | '}
-            <Link to="/ai" className="hover:text-primary transition-colors">
-              AI-Optimized Content
-            </Link>
+
+        <div className="mt-8 border-t pt-8 text-center">
+          <p className="text-sm text-gray-600">
+            © {currentYear} Your Company Name. All rights reserved.
+          </p>
+          <p className="mt-2 text-xs text-gray-500">
+            Built with Next.js • Optimized for AI Search Engines
           </p>
         </div>
       </div>
     </footer>
   )
 }
-
-export default Footer

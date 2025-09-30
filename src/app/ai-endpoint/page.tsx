@@ -3,6 +3,8 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Download, Copy, FileJson } from 'lucide-react'
 
+import JsonActions from '@/components/JsonActions'
+
 export const metadata: Metadata = {
   title: 'AI Data Endpoint',
   description: 'Machine-readable business data for AI assistants and search engines',
@@ -172,31 +174,7 @@ export default function AIEndpointPage() {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="mb-8 flex flex-wrap gap-4">
-              <button
-                onClick={() => {
-                  const blob = new Blob([jsonString], { type: 'application/json' })
-                  const url = URL.createObjectURL(blob)
-                  const a = document.createElement('a')
-                  a.href = url
-                  a.download = 'ai-data.json'
-                  a.click()
-                }}
-                className="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-6 py-3 font-medium text-white transition-colors hover:bg-primary-700"
-              >
-                <Download className="h-5 w-5" />
-                Download JSON
-              </button>
-              
-              <button
-                onClick={() => {
-                  navigator.clipboard.writeText(jsonString)
-                  alert('Copied to clipboard!')
-                }}
-                className="inline-flex items-center gap-2 rounded-lg border-2 border-gray-300 px-6 py-3 font-medium text-gray-700 transition-colors hover:bg-gray-50"
-              >
-                <Copy className="h-5 w-5" />
-                Copy to Clipboard
-              </button>
+              <JsonActions jsonString={jsonString} />
             </div>
 
             <div className="rounded-lg border border-gray-200 bg-gray-50 p-6">

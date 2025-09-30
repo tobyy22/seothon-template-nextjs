@@ -95,7 +95,7 @@ export default function ContactPage() {
                   Get in Touch
                 </h2>
                 <p className="mb-8 text-gray-600">
-                  We'd love to hear from you. Fill out the form or use any of the
+                  We&apos;d love to hear from you. Fill out the form or use any of the
                   contact methods below.
                 </p>
 

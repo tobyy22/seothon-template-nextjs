@@ -144,10 +144,10 @@ export default function AboutPage() {
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="mb-6 text-3xl font-bold text-gray-900">Our Team</h2>
               <p className="text-lg text-gray-700">
-                We're a passionate team of developers, designers, and SEO specialists
-                dedicated to bridging the gap between human-readable content and
-                machine-readable data structures.
-              </p>
+              We&apos;re a passionate team of developers, designers, and SEO specialists
+              dedicated to bridging the gap between human-readable content and
+              machine-readable data structures.
+            </p>
             </div>
           </div>
         </section>
